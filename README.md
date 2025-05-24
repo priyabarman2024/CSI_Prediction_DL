@@ -1,54 +1,107 @@
 # CSI_Prediction_DL
-Channel State Information (CSI)  prediction for Massive MIMO system using different types of Deep Learning techniques like CNN, RNN, LSTM, Transformer and also hybrid models in Python. Includes data preprocessing, feature engineering, model training, and evaluation using metrics like MAE, RMSE, SMAPE and also include heatmap visualization.
 
-## Project highlights
-- Different model to compare the resilts.
-- Data preprocessing pipeline: encoding, missing value imputation, scaling.
-- Custom PyTorch Dataset with sliding windows.
-- Training with early stopping and learning rate scheduling.
-- Evaluation using MSE & MAE.
-- visualization with heatmap.
-- Optionally save predicted CSI for spectral efficiency analysis.
-- 
+**Channel State Information (CSI) prediction for Massive MIMO systems** using various deep learning techniques such as **CNN, RNN, LSTM, Transformer**, and hybrid models in Python. This project covers the entire machine learning pipeline: data preprocessing, model training, evaluation, and visualization.
+
+---
+
+##  Project Highlights
+
+-  Multiple models (CNN, RNN, LSTM, Transformer) for comparison
+-  Data preprocessing pipeline: encoding, missing value imputation, MinMax scaling
+-  Custom PyTorch `Dataset` with sliding windows for temporal modeling
+-  Training loop with early stopping and learning rate scheduling
+-  Evaluation using MAE, RMSE, and SMAPE
+-  Heatmap visualization of prediction performance
+-  Optional: Save predicted CSI values for spectral efficiency analysis
+
+---
+
 ##  Folder Structure
-CSI_Prediction_DL/
-├── csi-pred1.ipynb # Main notebook with code
-├── README.md # Project documentation
-└── requirements.txt # Python dependencies
 
-##  Installation
-1.Clone this repository:
+```
+CSI_Prediction_DL/
+├── csi-pred1.ipynb            # Main notebook with full pipeline
+├── README.md                  # Project documentation
+└── requirements.txt           # Python dependencies
+```
+
+---
+
+## ⚙️ Installation
+
+1. **Clone the repository**
+```bash
 git clone https://github.com/priyabarman2024/CSI_Prediction_DL.git
 cd CSI_Prediction_DL
-2.Install dependencies:
+```
+
+2. **Install dependencies**
+```bash
 pip install -r requirements.txt
+```
 
-## Dataset
+---
+
+## 🗃️ Dataset
+
+Ensure the dataset is available at the following path:
+```
 /kaggle/input/csi-data/CSI_Data.csv
+```
 
-## Preprocessing includes:
-Dropping irrelevant columns (datetime(utc), flycState, message)
-Label encoding for categorical features
-Mean imputation for missing values
-MinMax scaling for numerical stability
+### Preprocessing steps:
+- Drop irrelevant columns: `datetime(utc)`, `flycState`, `message`
+- Encode categorical variables using LabelEncoder
+- Fill missing values with column mean
+- Normalize features using MinMaxScaler
 
-## Training
-Train the model with:
+---
+
+## 🏋️‍♂️ Training
+
+Call the following function to start model training:
+
+```python
 train_model(model, train_loader, val_loader, criterion, optimizer)
-Automatic early stopping and learning rate adjustment using ReduceLROnPlateau.
+```
 
-## Evaluation
+- Includes early stopping if validation loss doesn't improve
+- Uses `ReduceLROnPlateau` for adaptive learning rate reduction
+
+---
+
+## 📈 Evaluation
+
 After training:
-Evaluate on test set using MSE and MAE
-Compare predicted vs actual CSI
-Save predictions using pickle if needed
+- Evaluate performance using MAE, RMSE, and SMAPE
+- Visual comparison between actual vs predicted CSI values
+- Save predictions using `pickle` for downstream analysis
 
-## Future enhancements
-Implement spectral efficiency calculations
-Visualize prediction accuracy across time
-Real-time deployment in wireless simulators (e.g., NS-3, MATLAB 5G toolbox)
+---
 
-## Author
-Priya Barman
+## 📊 Visualization
 
+- Heatmap of prediction performance
+- Loss curves (Train vs Validation)
+- Error histograms (optional)
 
+---
+
+## 🔮 Future Enhancements
+
+- Implement CSI-to-Spectral Efficiency mapping
+- Extend to 5G NR or 6G simulation environments (e.g., NS-3, MATLAB)
+- Add model explainability (e.g., SHAP values for time-series)
+
+---
+
+## 👩‍💻 Author
+
+**Priya Barman**  
+🔗 [Kaggle Profile](https://www.kaggle.com/priyabarman2024)
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
